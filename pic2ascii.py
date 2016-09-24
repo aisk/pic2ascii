@@ -1,8 +1,5 @@
-# -*- coding:utf8 -*-
-# Author:aisk
-
 import sys
-import Image
+from PIL import Image
 
 HEIGHT = 100
 chars = "   ...',;:clodxkO0KXNWMMM"
@@ -18,7 +15,7 @@ def pic2ascii(filename):
         for x in range(size[0]):
             output += chars[pixs[x,y]/10]
         output += '\n'
-    print output
+    print(output)
 
 def getsize(image):
     '''Calculate the target picture size
@@ -33,7 +30,7 @@ def getsize(image):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print "Useage: pic2ascii.py filename"
+        print("Useage: pic2ascii.py filename")
         sys.exit(1)
     filename = sys.argv[1]
     pic2ascii(filename)
