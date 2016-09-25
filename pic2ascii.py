@@ -1,10 +1,14 @@
 import sys
+import typing
+
 from PIL import Image
 
-HEIGHT = 100
-chars = "   ...',;:clodxkO0KXNWMMM"
 
-def pic2ascii(filename):
+HEIGHT = 100
+chars = "   ...',;:clodxkO0KXNWMMMM"
+
+
+def pic2ascii(filename: str):
     output = ''
     image = Image.open(filename)
     size = getsize(image)
@@ -13,11 +17,12 @@ def pic2ascii(filename):
     pixs = image.load()
     for y in range(size[1]):
         for x in range(size[0]):
-            output += chars[pixs[x,y]/10]
+            output += chars[int(pixs[x, y] / 10)]
         output += '\n'
     print(output)
 
-def getsize(image):
+
+def getsize(image: Image.Image) -> typing.Tuple[int, int]:
     '''Calculate the target picture size
     '''
     s_width = image.size[0]
@@ -25,8 +30,9 @@ def getsize(image):
     t_height = HEIGHT
     t_width = (t_height*s_width)/s_height
     t_width = int(t_width * 2.3)
-    t_size = (t_width ,t_height)
+    t_size = (t_width, t_height)
     return t_size
+
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
