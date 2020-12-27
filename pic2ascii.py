@@ -1,14 +1,18 @@
 import sys
 import typing
 
+import fire
 from PIL import Image
 
 
 HEIGHT = 100
-chars = "   ...',;:clodxkO0KXNWMMMM"
+CHARS = "   ...',;:clodxkO0KXNWMMMM"
 
 
-def pic2ascii(filename: str):
+def pic2ascii(filename: str, *, reverse: typing.Optional[bool] = False):
+    chars = CHARS
+    if reverse:
+        chars = list(reversed(chars))
     output = ''
     image = Image.open(filename)
     size = getsize(image)
@@ -35,8 +39,4 @@ def getsize(image: Image.Image) -> typing.Tuple[int, int]:
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Useage: pic2ascii.py filename")
-        sys.exit(1)
-    filename = sys.argv[1]
-    pic2ascii(filename)
+    fire.Fire(pic2ascii)
