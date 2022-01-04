@@ -31,7 +31,7 @@ setup(
     keywords='image to ascii',
     packages=find_packages(exclude=['tests']),
     install_requires=[
-        'pillow~=8.0',
+        'pillow>=8,<10',
         'fire~=0.3',
     ],
 )
