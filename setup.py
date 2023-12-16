@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='pic2ascii',
-    version='0.1.0',
+    version='0.2.0',
 
     description='A simple tool to draw yout image to ascii code',
     long_description=long_description,
