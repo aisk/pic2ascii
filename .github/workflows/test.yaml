@@ -1,0 +1,22 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  without-PYTHONLEGACYWINDOWSSTDIO:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13' 
+    - run: python a.py
+  with-PYTHONLEGACYWINDOWSSTDIO:
+    runs-on: windows-latest
+    env:
+      PYTHONLEGACYWINDOWSSTDIO: 1
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13' 
+    - run: python a.py
